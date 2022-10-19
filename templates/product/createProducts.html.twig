@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductController!
+{% endblock %}
+
+{% block body %}
+	<div class="container text-center">
+		<h1>Creación de productos</h1>
+
+		{% if form is defined %}
+
+        	{{form(form)}}
+            
+		{% endif %}
+
+	</div>
+{% endblock %}

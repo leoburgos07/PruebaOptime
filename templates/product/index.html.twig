@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello
+	{{controller_name}}
+{% endblock %}
+
+{% block body %}
+	<div class="container text-center">
+		<h1>Listado de productos</h1>
+
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Code</th>
+					<th scope="col">Name</th>
+					<th scope="col">Description</th>
+					<th scope="col">Brand</th>
+					<th scope="col">Price</th>
+					<th scope="col">Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for product in products %}
+					<tr>
+						
+						<td>{{product.code | upper }}</td>
+						<td>{{product.name | title }}</td>
+						<td>{{product.description | capitalize }}</td>
+						<td>{{product.brand | title }}</td>
+						<td class="font-weight-bold">${{product.price | number_format }}</td>
+						<td> 
+							<a href="{{ path('delete_product', { id: product.id } )}}" > Eliminar</a> 
+							<a href="{{ path('product',{ id: product.id }) }}">Editar </a>
+						</td>
+
+					</tr>
+				{% endfor %}
+
+				
+
+			</tbody>
+		</table>
+
+	</div>
+{% endblock %}
